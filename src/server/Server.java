@@ -31,7 +31,7 @@ class Server extends Thread
             while ((linea = br.readLine())!=null) {
               if(linea.equalsIgnoreCase(words[1])) {
                 this.username = words[1];
-                this.log("Info: User " + this.username + " logs at " + java.time.LocalDateTime.now() + " from " + who + " with the " + protocol + " protocol");
+                this.log("Info: User " + this.username + " login at " + java.time.LocalDateTime.now() + " from " + who + " with the " + protocol + " protocol");
                 return "OK";
               }
             }
