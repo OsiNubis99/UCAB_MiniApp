@@ -58,10 +58,10 @@ class Main
             while(true){
                System.out.println("Send 'exit' to finish this job");
                msg = inFromUser.readLine();
+               if (msg.equalsIgnoreCase("exit")) break;
                sendPacket =
                   new DatagramPacket(msg.getBytes(), msg.getBytes().length, IPAddress, port);
                clientSocket.send(sendPacket);
-               if (msg.equalsIgnoreCase("exit")) break;
                clientSocket.receive(receivePacket);
                response = new String(receivePacket.getData(), 0, receivePacket.getLength());
                System.out.println(response);
