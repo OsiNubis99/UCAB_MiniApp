@@ -8,23 +8,21 @@
 <!-- PROJECT DESCRIPTION -->
 <br />
 <p align="center">
-  <a href="https://github.com/OsiNubis99/Default-Template">
+  <a href="https://github.com/OsiNubis99/UCAB_MiniApp">
     <img src="docs/images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
-  <h1 align="center">Default-Template</h1>
+  <h1 align="center">UCAB_MiniApp</h1>
 
   <p align="center">
-    project_description
+    Basic Server and Client with a UDP/TCP socket connection. All by terminal with pretty logs.
     <br />
-    <a href="https://github.com/OsiNubis99/Default-Template"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/OsiNubis99/UCAB_MiniApp"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/OsiNubis99/Default-Template">View Demo</a>
+    <a href="https://github.com/OsiNubis99/UCAB_MiniApp/issues">Report Bug</a>
     ·
-    <a href="https://github.com/OsiNubis99/Default-Template/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/OsiNubis99/Default-Template/issues">Request Feature</a>
+    <a href="https://github.com/OsiNubis99/UCAB_MiniApp/issues">Request Feature</a>
   </p>
 </p>
 
@@ -33,7 +31,6 @@
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)
-- [Built With](#built-with)
 - [Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
   - [Deployment](#deployment)
@@ -46,46 +43,44 @@
   - [Email](#email)
 - [Acknowledgements](#acknowledgements)
 
-## Built With
-
-- []()
-- []()
-
-<!-- GETTING STARTED -->
-
 ## Getting Started
 
 ### Prerequisites
+   You need java already installed and a "personas.txt" file with all registered users. 
 
 ### Deployment
 
-1.
+1.  First clone the repository and move to his folder
 
 ```sh
-
+git clone https://github.com/OsiNubis99/UCAB_MiniApp ~/UCAB_MiniApp && cd ~/UCAB_MiniApp
 ```
 
-2.
+2.  Now you need compile the server and client.
 
-3.
-
-```sh
-
+``` sh
+javac ./src/server/Main.java && javac ./src/client/Main.java
 ```
-
-<!-- USAGE EXAMPLES -->
 
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+First open 2 terminals (both in the project folder). Now run Server and Client.
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+Server:
+```sh
+java src.server.Main
+```
+
+Client:
+``` sh
+java src.client.Main
+```
 
 <!-- ROADMAP -->
 
 ## Roadmap
 
-See the [open issues](https://github.com/OsiNubis99/Default-Template/issues) for a list of proposed features (and known issues).
+See the [open issues](https://github.com/OsiNubis99/UCAB_MiniApp/issues) for a list of proposed features (and known issues).
 
 <!-- CONTRIBUTING -->
 
@@ -128,15 +123,15 @@ My email address OsiNubis99@PM.me
 
 <!-- MARKDOWN LINKS & IMAGES -->
 
-[contributors-shield]: https://img.shields.io/github/contributors/OsiNubis99/Default-Template.svg?style=for-the-badge
-[contributors-url]: https://github.com/OsiNubis99/Default-Template/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/OsiNubis99/Default-Template.svg?style=for-the-badge
-[forks-url]: https://github.com/OsiNubis99/Default-Template/network/members
-[stars-shield]: https://img.shields.io/github/stars/OsiNubis99/Default-Template.svg?style=for-the-badge
-[stars-url]: https://github.com/OsiNubis99/Default-Template/stargazers
-[issues-shield]: https://img.shields.io/github/issues/OsiNubis99/Default-Template.svg?style=for-the-badge
-[issues-url]: https://github.com/OsiNubis99/Default-Template/issues
-[license-shield]: https://img.shields.io/github/license/OsiNubis99/Default-Template.svg?style=for-the-badge
-[license-url]: https://github.com/OsiNubis99/Default-Template/blob/master/LICENSE
+[contributors-shield]: https://img.shields.io/github/contributors/OsiNubis99/UCAB_MiniApp.svg?style=for-the-badge
+[contributors-url]: https://github.com/OsiNubis99/UCAB_MiniApp/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/OsiNubis99/UCAB_MiniApp.svg?style=for-the-badge
+[forks-url]: https://github.com/OsiNubis99/UCAB_MiniApp/network/members
+[stars-shield]: https://img.shields.io/github/stars/OsiNubis99/UCAB_MiniApp.svg?style=for-the-badge
+[stars-url]: https://github.com/OsiNubis99/UCAB_MiniApp/stargazers
+[issues-shield]: https://img.shields.io/github/issues/OsiNubis99/UCAB_MiniApp.svg?style=for-the-badge
+[issues-url]: https://github.com/OsiNubis99/UCAB_MiniApp/issues
+[license-shield]: https://img.shields.io/github/license/OsiNubis99/UCAB_MiniApp.svg?style=for-the-badge
+[license-url]: https://github.com/OsiNubis99/UCAB_MiniApp/blob/master/LICENSE
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/OsiNubis99
