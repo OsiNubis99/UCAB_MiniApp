@@ -1,12 +1,12 @@
-package src;
+package src.server;
 
 import java.io.*;
 import java.net.*;
-import src.Server;
+import src.server.Server;
 
-class UDPServer extends Server
+class UDP extends Server
 {
-  public UDPServer(int port){
+  public UDP(int port){
     this.port = port;
   }
 

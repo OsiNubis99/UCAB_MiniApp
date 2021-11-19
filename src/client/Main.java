@@ -1,9 +1,9 @@
-package src;
+package src.client;
 
 import java.io.*;
 import java.net.*;
 
-class Client
+class Main
 {
    public static void main(String argv[]) throws Exception
    {
@@ -61,6 +61,7 @@ class Client
                sendPacket =
                   new DatagramPacket(msg.getBytes(), msg.getBytes().length, IPAddress, port);
                clientSocket.send(sendPacket);
+               if (msg.equalsIgnoreCase("exit")) break;
                clientSocket.receive(receivePacket);
                response = new String(receivePacket.getData(), 0, receivePacket.getLength());
                System.out.println(response);

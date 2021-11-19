@@ -1,4 +1,4 @@
-package src;
+package src.server;
 
 import java.io.*;
 
@@ -26,18 +26,17 @@ class Server extends Thread
       case "helloiam":
         if(words.length >= 2)
           try {
-            BufferedReader br=new BufferedReader(new FileReader("personas.txt"));
+            BufferedReader br = new BufferedReader(new FileReader("personas.txt"));
             String linea="";
             while ((linea = br.readLine())!=null) {
               if(linea.equalsIgnoreCase(words[1])) {
                 this.username = words[1];
                 this.log("Info: User " + this.username + " logs at " + java.time.LocalDateTime.now() + " from " + who + " with the " + protocol + " protocol");
                 return "OK";
-              }else {
-              this.log("Warning: Bad user try to log at " + java.time.LocalDateTime.now() + " from " + who + " with user " + words[1]);
-              return "Erorr: User isn't verificated";
               }
             }
+            this.log("Warning: Bad user try to log at " + java.time.LocalDateTime.now() + " from " + who + " with user " + words[1]);
+            return "Erorr: User isn't verificated";
           } catch(IOException e) {
             System.out.println("Error: " + e);
             return "Error 500";

@@ -1,12 +1,12 @@
-package src;
+package src.server;
 
 import java.io.*;
 import java.net.*;
-import src.Server;
+import src.server.Server;
 
-class TCPServer extends Server
+class TCP extends Server
 {
-  public TCPServer(int port){
+  public TCP(int port){
     this.port = port;
   }
 
