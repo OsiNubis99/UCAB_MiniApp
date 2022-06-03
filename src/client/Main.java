@@ -1,75 +1,42 @@
 package src.client;
 
-import java.io.*;
-import java.net.*;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
+import java.util.Scanner;
+import src.RMI.RMIInterface;
 
-class Main
-{
-   public static void main(String argv[]) throws Exception
-   {
-      String address = "127.0.0.1";
-      String response;
-      String msg;
-      int port = 19876;
-      BufferedReader inFromUser =
-         new BufferedReader(new InputStreamReader(System.in));
-      System.out.println("Hello! Do you want to connect with UDP or TCP protocols?");
-      System.out.println("\tUse 0 to the TCP protocol");
-      System.out.println("\tUse 1 to the UDP protocol");
-      String protocol = inFromUser.readLine();
-      System.out.println("What is your username?");
-      String username = inFromUser.readLine();
-      if(protocol.equalsIgnoreCase("0")){
-         Socket clientSocket = new Socket(address, port);
-         PrintWriter outToServer =
-            new PrintWriter(clientSocket.getOutputStream(), true);
-         BufferedReader inFromServer =
-            new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-         outToServer.println("helloiam " + username);
-         response = inFromServer.readLine();
-         if(response.equalsIgnoreCase("OK")){
-            System.out.println("Connection OK Please send a Message now.");
-            while (true){
-               System.out.println("Send 'exit' to finish this job");
-               msg = inFromUser.readLine();
-               outToServer.println(msg);
-               if (msg.equalsIgnoreCase("exit")) break;
-               response = inFromServer.readLine();
-               System.out.println(response);
-            }
-         }else {
-            System.out.println(response);
-         }
-         clientSocket.close();
-      }else{
-         DatagramSocket clientSocket = new DatagramSocket();
-         InetAddress IPAddress = InetAddress.getByName(address);
-         byte[] receiveData = new byte[1024];
-         DatagramPacket receivePacket =
-            new DatagramPacket(receiveData, receiveData.length);
-         msg = "helloiam " + username;
-         DatagramPacket sendPacket =
-            new DatagramPacket(msg.getBytes(), msg.getBytes().length, IPAddress, port);
-         clientSocket.send(sendPacket);
-         clientSocket.receive(receivePacket);
-         response = new String(receivePacket.getData(), 0, receivePacket.getLength());
-         if(response.equalsIgnoreCase("OK")){
-            System.out.println("Connection OK Please send a Message now.");
-            while(true){
-               System.out.println("Send 'exit' to finish this job");
-               msg = inFromUser.readLine();
-               if (msg.equalsIgnoreCase("exit")) break;
-               sendPacket =
-                  new DatagramPacket(msg.getBytes(), msg.getBytes().length, IPAddress, port);
-               clientSocket.send(sendPacket);
-               clientSocket.receive(receivePacket);
-               response = new String(receivePacket.getData(), 0, receivePacket.getLength());
-               System.out.println(response);
-            }
-         }else {
-            System.out.println(response);
-         }
-         clientSocket.close();
+public class Main {
+  private static final String IP = "127.0.0.1";
+  private static final int PUERTO = 1100;
+
+  public static void main(String[] args)
+      throws RemoteException, NotBoundException {
+
+    Registry registry = LocateRegistry.getRegistry(IP, PUERTO);
+    RMIInterface rmiServer = (RMIInterface)registry.lookup("MiniApp");
+
+    Scanner sc = new Scanner(System.in);
+
+    int eleccion;
+    float numero1, numero2, resultado = 0;
+    String menu = "[1] Send a new message\n[0] OUT!\n\nInsert an option: ";
+    do {
+      System.out.print(menu);
+      try {
+        eleccion = Integer.parseInt(sc.nextLine());
+      } catch (NumberFormatException e) {
+        eleccion = 0;
       }
-   }
+      if (eleccion != 0) {
+        System.out.print("Send me your message: ");
+        try {
+          System.out.println(rmiServer.write(sc.nextLine()));
+        } catch (NumberFormatException e) {
+          numero1 = 0;
+        }
+      }
+    } while (eleccion != 0);
+  }
 }
