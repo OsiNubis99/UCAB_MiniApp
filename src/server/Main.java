@@ -7,15 +7,19 @@ import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
+import java.text.SimpleDateFormat;
+import java.util.*;
 import src.RMI.RMIInterface;
 
 public class Main {
   public static String log(String message) {
     try {
+      String actualDate =
+          new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new Date());
       FileWriter lf = new FileWriter("server.log", true);
       BufferedWriter bw = new BufferedWriter(lf);
       bw.newLine();
-      bw.write(message);
+      bw.write(actualDate + " -> Message recived: " + message);
       bw.close();
       return "\nMessage was saved\n";
     } catch (IOException e) {
